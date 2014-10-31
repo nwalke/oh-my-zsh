@@ -1,4 +1,4 @@
-PROMPT=$'%{$fg[white]%}[%{$fg[blue]%}%* %n@%m%{$fg[white]%}]%{$reset_color%} %~
+PROMPT=$'%{$fg[white]%}[%{$fg[blue]%}%* %n%{$fg[green]%}@%{$fg[blue]%}%m%{$fg[white]%}]%{$reset_color%} %~
 %{$fg[blue]%}$%{$reset_color%} '
 
 RPROMPT='%{$(echotc UP 1)%}$(git_prompt_info)%{$(echotc DO 1)%}'
