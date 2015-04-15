@@ -49,22 +49,52 @@ plugins=(git brew)
 
 source $ZSH/oh-my-zsh.sh
 
-# -- User configuration
-# Aliases
+
+# -- Aliases
+# General
 alias ls='ls -FG --color'
 alias ll='ls -l'
 alias la='ll -a'
 alias  l='ll'
-alias cs='cd && ls'
 
-# Exports
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/man:$MANPATH"
+# Environments
+alias -g envp="environment=production"
+alias -g envs="environment=staging"
+alias -g envd="environment=development"
+
+# Development
+alias composer="~/composer.phar"
+
+
+# -- Functions
+# List contents after change directory
+function cs() {
+    cd "$@" && ls
+}
+
+# Simple terminal math (e.g., "c 12 + 12")
+function c() {
+    echo "$(($@))"
+}
+
+
+# -- Exports
+# General
 export EDITOR='vim'
 
+# OS X/Homebrew
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/man:$MANPATH"
+
+
+# -- External sources
 # NVM
-export NVM_DIR="/Users/blake/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+
+# RVM
+export RVM_DIR="$HOME/.rvm"
+[[ -s "$RVM_DIR/scripts/rvm" ]] && source "$RVM_DIR/scripts/rvm"
 
 # Dir colors
-[ -s "~/.dircolors" ] && eval `dircolors ~/dircolors`
+[[ -s "~/.dircolors" ]] && eval `dircolors ~/dircolors`
